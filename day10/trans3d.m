@@ -27,9 +27,9 @@ function T = Rx(theta)
           0, 0, 0, 1 ];
 end
 function T = Ry(theta)
-    T = [ cos(theta), 0, -sin(theta), 0;
+    T = [ cos(theta), 0, sin(theta), 0;
           0, 1, 0, 0;
-          sin(theta), 0, cos(theta), 0;
+          -sin(theta), 0, cos(theta), 0;
           0, 0, 0, 1 ];
 end
 function T = Rz(theta)
@@ -56,13 +56,13 @@ Rx(pi/2)*[e_y; 1]
 %%
 
 L1 = 1;
-theta1 = 2*pi-0.5;
+theta1 = 0;
 
 L2 = 3;
-theta2 = pi/4;
+theta2 = 0;
 
 L3 = 2;
-theta3 = -pi/2;
+theta3 = 0;
 
 T_01 = Tz(L1) * Rz(theta1)
 T_12 = Ry(theta2) * Tx(L2)
@@ -108,7 +108,7 @@ L2 = 3;
 theta2 = pi/4;
 
 L3 = 2;
-theta3 = -pi/2;
+theta3 = pi/2;
 
 f = figure; 
 
@@ -122,7 +122,7 @@ M(loops) = struct('cdata', [], 'colormap', []);
 f.Visible = 'off';
 
 for i = 1:loops
-    theta1 = theta1 + 2*pi/loops;
+    theta1 = theta1 + 4*pi/loops;
     theta2 = cos(4*pi*i/loops)*pi/4;
     theta3 = sin(4*pi*i/loops)*pi/4;
 
