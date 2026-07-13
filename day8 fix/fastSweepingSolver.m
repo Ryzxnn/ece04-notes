@@ -1,4 +1,4 @@
-function [U,iter] = fastSweepingSolver(N,target_i,target_j,obstacle,maxIter,tol)
+function [U,iter] = fastSweepingSolver(N,target_i,target_j,obstacle,maxIter,tol, f)
 % fastSweepingSolver
 %
 % INPUTS:
@@ -21,7 +21,7 @@ U(target_i, target_j) = 0;
 for iter = 1:maxIter
     U_old = U;
     % 5. Perform one full set of four sweeps.
-    U = fastSweepIteration(U, h, target_i, target_j, obstacle);
+    U = fastSweepIteration(U, h, target_i, target_j, obstacle, f);
     % 6. Compute largest change.
     change = abs(U_old-U);
     % 7. Stop if converged.

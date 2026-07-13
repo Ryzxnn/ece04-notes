@@ -23,13 +23,13 @@ unsafe(Theta2 > 0.5 & Theta2 < 3 & Theta1 > 1 & Theta1 < 1.5) = true;
 tol = 1e-8;
 maxIter = 50;
 U = periodicFastSweepingSolver(theta1, theta2, target_i, target_j, unsafe, tol, maxIter);
-    
+
 figure; 
 imagesc(theta1, theta2, U);
 
 % torusVisualizer(theta1, theta2, theta1_goal, theta2_goal, U, 25)
 
-t0 = [5.5, 5.5];
+t0 = [1.3, 5.5];
 
 goal = [theta1_goal, theta2_goal];
 
@@ -41,7 +41,7 @@ U(isinf(U)) = NaN;
 figure; 
 quiver(Theta1, Theta2, -Ux, -Uy);
 
-dt=0.0001;
+dt=0.0005;
 Nsteps = 10/dt;
 goal_tol = 0.018;
 

@@ -24,6 +24,8 @@ U = BIG * ones(N, N);
 U(target_i, target_j) = 0;
 U(unsafe) = inf;
 
+f = genPeriodicEikFun(N, unsafe, 0.2, 4);
+
 if isinf(U(target_i,target_j))
     error('Target was marked as unsafe.');
 end
@@ -46,7 +48,7 @@ for iter = 1:maxIter
                 u_down = U(i_down, j);
                 u_left = U(i, j_left);
                 u_right = U(i, j_right);
-                u_candidate = localEikonalUpdate(min(u_left, u_right), min(u_up, u_down), h, 1);
+                u_candidate = localEikonalUpdate(min(u_left, u_right), min(u_up, u_down), h, f(i, j));
                 U(i,j) = min(U(i,j), u_candidate);
             end
         end

@@ -1,4 +1,4 @@
-function U = fastSweepIteration(U,h,target_i,target_j,obstacle)
+function U = fastSweepIteration(U,h,target_i,target_j,obstacle,f)
 % fastSweepIteration
 %
 % INPUTS:
@@ -21,7 +21,7 @@ function U = sweepEik2(U, range_i, range_j)
             end
             a = min(U(i, j+1), U(i, j-1));
             b = min(U(i+1, j), U(i-1, j));
-            u_candidate = localEikonalUpdate(a,b,h, 1);
+            u_candidate = localEikonalUpdate(a,b,h,f(i,j));
             U(i,j) = min(U(i,j), u_candidate);
         end
     end

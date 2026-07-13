@@ -18,7 +18,7 @@ theta2_goal = round(1);
 [~, target_i] = min(abs(theta2-theta2_goal));
 
 unsafe = false(N, N);
-% unsafe(Theta2 > pi/12 & Theta2 < pi/6 & Theta1 > -pi/6 & Theta1 < pi/6) = true;
+unsafe(Theta2 > pi/12 & Theta2 < pi/6 & Theta1 > -pi/6 & Theta1 < pi/6) = 1;
 
 figure;
 imagesc(theta1, theta2, unsafe)
@@ -33,3 +33,6 @@ torusVisualizer(theta1, theta2, theta1_goal, theta2_goal, U, 25)
 [gy, gx] = gradient(U, theta1(2)-theta1(1));
 figure; 
 quiver(Theta1, Theta2, -gx, -gy);
+
+figure; 
+contourf(theta1, theta2, U, 50)
